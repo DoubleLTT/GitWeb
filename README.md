@@ -1,2 +1,2 @@
 # MyWeb
-(my web)[https://doubleltt.github.io/GitWeb/index]
+#<a href="https://doubleltt.github.io/GitWeb/index">主页</a>
