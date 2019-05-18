@@ -67,6 +67,7 @@ li a:link,li a:visited
 #page1 h1,#page4 h1{
 	font-size: 70px;
 	font-weight: bolder;
+	position: relative;
 }
 h1 span,p span{
 	color: #bd5d38;

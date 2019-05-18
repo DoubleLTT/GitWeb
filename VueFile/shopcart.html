@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>VUE购物车</title>
+	<script src="../js/vue.min.js"></script>
+	<style type="text/css">
+		.goods{
+			margin:50px auto;
+			text-align: center;
+		}
+		ul{
+			margin: 0 auto;
+			list-style: none;
+			width: 600px;
+		}
+		li{
+			width: 192px;
+			margin-right: 2px;
+			display: inline-block;
+			border: 1px solid #eee;
+		}
+		li img{
+			width: 192px;
+			height: 192px;
+		}
+		li:hover{
+			border-color: #333;
+		}
+		table,th,td{
+			border:1px solid #000;
+			text-align: center;
+		}
+		table{
+			margin:50px auto;
+			width: 500px;
+			border-collapse: collapse;
+		}
+		td{
+			padding:5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="goods">
+			<ul>
+				<li v-for="(item,index) in good_json">
+					<img v-bind:src="item.url">
+					<h3>{{item.name}}</h3>
+					<p>价格:￥{{item.price}} <button @click="choose(index)">添加</button></p>
+				</li>
+			</ul>
+		</div>
+		<table>
+			<tr>
+				<th v-for="hd in headers">{{hd.head}}</th>
+			</tr>
+			<tr v-for="(item,index) in cart_json">
+				<td>{{item.id}}</td>
+				<td>{{item.name}}</td>
+				<td>{{item.price}}</td>
+				<td><button @click="item.count--" v-bind:disabled="item.count===0">-</button>
+					{{item.count}}
+					<button @click="item.count++">+</button></td>
+				<td><button @click="item.count=0">清空</button>
+				<button @click="remove(index)">删除</button>
+			</td>
+			</tr>			
+			<!-- <tr v-for="good in good_json">
+				<td>{{good.id}}</td>
+				<td>{{good.name}}</td>
+				<td>{{good.price}}</td>
+				<td><button @click="good.count--" v-bind:disabled="good.count===0">-</button>
+					{{good.count}}
+					<button @click="good.count++">+</button></td>
+				<td><button @click="good.count=0">清空</button></td>
+			</tr> -->
+			<tr>
+				<td colspan="5">总价:￥{{totalPriice()}}</td>
+			</tr>
+		</table>
+	</div>
+	<script type="text/javascript">
+		new Vue({
+			el:'.box',
+			data:{
+				headers:[
+				{head:'序号'},
+				{head:'名称'},
+				{head:'价格'},
+				{head:'数量'},
+				{head:'操作'}
+				],
+				cart_json:[],
+				current:'',
+				good_json:[
+				{
+					id:1,
+					name:'充电宝1',
+					price:100,
+					url:'../images/ross1.jpg',
+					count:1
+				},
+				{
+					id:2,
+					name:'充电宝2',
+					price:200,
+					url:'../images/ross2.jpg',
+					count:1
+				},
+				{
+					id:3,
+					name:'充电宝3',
+					price:300,
+					url:'../images/ross4.jpg',
+					count:1
+				},
+				]
+			},
+			methods:{
+				totalPriice:function(){
+					var totalP=0;
+					for(var i=0,len=this.cart_json.length;i<len;i++){
+						totalP+=this.cart_json[i].price*this.cart_json[i].count;
+					}
+					return totalP;
+				},
+				choose(index){
+					var item=0;
+					this.current=index;
+					item=this.cart_json.find(item =>{return item.id==this.current+1}); /*查找元素*/
+					if(item===undefined){this.cart_json.push(this.good_json[this.current])}
+					else{
+						this.cart_json[this.current].count++
+					};					
+					this.current=''		
+				},
+				remove(index){
+					this.cart_json.splice(index,1)
+				}
+			}
+		})
+	</script>
+</body>
+</html>

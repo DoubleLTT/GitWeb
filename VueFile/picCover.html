@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>图片封面</title>
+	<script type="text/javascript" src="../js/picCover.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/picCover-图片封面.css">
+</head>
+<body id="bodybac">
+	<div class="container">
+	<p id="btn" class="closeBtn" onclick="closeBack()">&times;</p>
+	<div id="bo1" class="box" onclick="showBack()">
+		<div id="bac" class="bac">
+			<h2>生命</h2>
+			<p>生命就像一盒巧克力</p>
+			<a href="#des1" id="a1"></a>
+		</div>
+		<ul id="des1" class="des">
+			<li>生命就像一盒巧克力，结果往往出人意料。</li>
+			<li>蠢人做蠢事,也可理解为傻人有傻福。 ——《阿甘正传》</li>
+			<li>人生和电影不同，人生辛苦多了。 ——《天堂电影院》</li>
+			<li>每一个不曾起舞的日子，都是对生命的辜负。</li>
+			<li>你听好了，趁着年轻什么都别管，起舞吧。 ——《横道世之介》</li>
+		</ul>
+	</div>
+	
+	<p id="btn1" class="closeBtn" onclick="closeBack1()">&times;</p>
+	<div id="bo2" class="box" onclick="showBack1()">
+		<div id="bac1" class="bac">
+			<h2>死亡</h2>
+			<p>死亡是生命的一部分</p>
+			<a href="#des2" id="a2"></a>
+		</div>
+		<ul id="des2" class="des">
+			<li>人生可以归结为一种简单的选择：不是忙着活，就是忙着死。 ——《肖申克的救赎》</li>
+			<li>成年人的生活里没有容易二字。 ——《天气预报员》</li>
+			<li>死亡是生命的一部分，是我们注定要做的一件事。  ——《阿甘正传》</li>
+			<li>你们一直抱怨这个地方，但是你们却没有勇气走出这里。 ——《飞越疯人院》</li>
+			<li>这个世界本身就没有所谓的清白而言，你能坦言自己从来就没说过谎，这是自欺欺人。 ——《教父》</li>
+		</ul>
+	</div>
+
+	<p id="btn2" class="closeBtn" onclick="closeBack2()">&times;</p>
+	<div id="bo3" class="box" onclick="showBack2()">
+		<div id="bac2" class="bac">
+			<h2>时间</h2>
+			<p>时间很贪婪</p>
+			<a href="#des3" id="a3"></a>
+		</div>
+		<ul id="des3" class="des">
+			<li>时间很贪婪——有时候,它会独自吞噬所有的细节。 ——《追风筝的人》</li>
+			<li>当你年轻的时候，屁大点事都觉得像世界末日，其实不然，那只是个开始。 ——《重返十七岁》</li>
+			<li>发生过的事是不会忘记的，只是想不起来而已。 《千与千寻》</li>
+			<li>被真相伤害总比被谎言欺骗的好,得到了再失去，总是比从来就没有得到更伤人。</li>
+		</ul>
+	</div>
+	
+	<p id="btn3" class="closeBtn" onclick="closeBack3()">&times;</p>
+	<div id="bo4" class="box" onclick="showBack3()">
+		<div id="bac3" class="bac">
+			<h2>奇迹</h2>
+			<p>奇迹每天都在发生</p>
+			<a href="#des4" id="a4"></a>
+		</div>
+		<ul id="des4" class="des">
+			<li>假如再也见不到你，那祝你早安，午安，晚安。  ——《楚门的世界》</li>
+			<li>坚强的人只能救赎自己，伟大的人才能拯救他人。 ——《肖申克的救赎》</li>
+			<li>如果我没有刀，我就不能保护你。如果我有刀，我就不能拥抱你。 ——《剪刀手爱德华》</li>
+			<li>永远别说永远，凡事都有可能。 ——《放牛班的春天》</li>
+			<li>如果你不出去走走，你就会以为这就是全世界。 ——《天堂电影院》</li>
+		</ul>
+	</div>
+</div>
+	<script type="text/javascript">
+		//第1个盒子
+		document.getElementById("bac").addEventListener("mouseover", myFunction);
+		document.getElementById("bac").addEventListener("mouseout", mySecondFunction);
+		//第2个盒子
+		document.getElementById("bac1").addEventListener("mouseover", myFunction1);
+		document.getElementById("bac1").addEventListener("mouseout", mySecondFunction1);
+		//第3个盒子
+		document.getElementById("bac2").addEventListener("mouseover", myFunction2);
+		document.getElementById("bac2").addEventListener("mouseout", mySecondFunction2);
+		//第4个盒子
+		document.getElementById("bac3").addEventListener("mouseover", myFunction3);
+		document.getElementById("bac3").addEventListener("mouseout", mySecondFunction3);
+	</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>VUE</title>
+	<script type="text/javascript" src="../js/vue.min.js"></script>
+	<style type="text/css">
+		.class1{
+			background: #444;
+			color: #eee;
+		}
+		img{
+			width: 100px;
+			height: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<p>{{message1}}</p>
+		<p v-html="message2"></p>
+		<!-- 在 input 输入框(select、textarea、checkbox、radio)中使用 v-model 指令来实现双向数据绑定 -->
+		<p>{{message3}}</p>
+		<input  v-model="message3">
+
+		<p><label for="r1">修改颜色</label><input type="checkbox" name="" v-model="use" id="r1"></p>
+		<div v-bind:class="{'class1':use}">v-bind指令</div>
+
+		<!-- v-bind 指令将元素的 href 属性与表达式 url 的值绑定 
+		缩写：<a :href="url"></a>-->
+		<a v-bind:href="url">index</a>  
+
+		<!-- 按钮的事件使用 v-on 监听，并对用户的输入进行响应。
+		缩写：<a @click="reverseMessage"></a> -->
+		<p>{{message4}}</p>
+		<button v-on:click="reverseMessage">反转字符串</button> 
+
+		<p>计数器：{{counter}} <button @click="counter++">点我</button></p>
+
+		<p>多个复选框</p>
+		<input type="checkbox" value="我" id="me" v-model="checkedName">
+		<label for="me">wo</label>
+		<input type="checkbox" value="你" id="you" v-model="checkedName">
+		<label for="you">ni</label>
+		<br><span>选择的值为:{{checkedName}}</span>
+		
+		<img v-bind:src="imgurl">
+	</div>
+	<script type="text/javascript">
+		new Vue({
+			el:'.box',
+			data:{
+				message1:'hello vue.js!',
+				message2:'<h1>hello vue!<h1>',
+				message3:'vue.js',
+				message4:'HELLOLTT',
+				use:false,
+				url:'../index.html',
+				imgurl:'../images/ross1.jpg',
+				counter:1,
+				checkedName:[]
+			},
+			methods:{
+				reverseMessage:function(){
+					this.message4=this.message4.split('').reverse().join('')
+				}
+			}
+		});
+
+	</script>
+</body>
+</html>

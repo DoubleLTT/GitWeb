@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>VUE STUDY</title>
+  <style type="text/css">
+    body {
+      font-family: "Lato", sans-serif;
+    }
+    .bar{
+      height: 250px;
+      width: 0;
+      position: fixed;
+      overflow-x: hidden;
+      background: #111;
+      transition: 0.5s;
+      padding-top: 50px;
+    }
+    .bar a{
+      display: block;
+      color: #818181;
+      text-decoration: none;
+      font-size: 25px;
+      padding:8px 8px 8px 32px;
+      transition: 0.3s;
+    }
+    .closeBtn{
+      position: absolute;
+      font-size: 36px;
+      right: 25px;
+    }
+    .bar a:hover{
+      color:#f1f1f1;
+    }
+    span{
+      font-size: 30px;
+      cursor:pointer;
+    }
+    /*@media screen and (max-height: 450px){
+      .bar {padding-top: 15px;}
+      .bar a {font-size: 18px;}
+    } */
+
+  </style>
+</head>
+<body>
+  <div id="myBar" class="bar">
+    <a href="#" class="closeBtn" onclick="closeBar()">&times;</a>
+    <a href="#">item1</a>
+    <a href="#">item2</a>
+    <a href="#">item3</a>
+    <a href="#">item4</a>
+  </div>
+  <span onclick="openBar()">&#9776; 打开</span>
+
+  <script type="text/javascript">
+    function openBar(){
+      document.getElementById("myBar").style.width="100%";
+    }
+    function closeBar(){
+      document.getElementById("myBar").style.width="0"
+    }
+  </script>
+</body>
+</html>
