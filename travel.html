@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>旅游网站</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/vue.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	
+	<style type="text/css">
+		.box{
+			
+		}
+		.item{
+			width: 100%;
+			height: 650px;
+			color: #fff;
+			text-align: center;
+		}
+		.content{
+			overflow: hidden;
+			position: absolute;
+			top: 30%;
+			left: 22%;
+			animation:myText 2s;
+			animation-timing-function:ease-out;
+		}
+		@keyframes myText
+		{
+			from{height:0px;}
+			to  {height:193px;}
+		}
+		.content h1{
+			font-size: 70px;
+			font-weight: bold;
+			margin-bottom: 20px;
+		}
+		.navbar{
+			width: 500px;
+			position: absolute;
+			z-index: 1;
+			right: 80px;
+			top: 100px;
+		}
+		.navbar li{
+			width: 90px;
+			font-size: 18px;
+			float: left;
+		}
+		.navbar a{
+			color: #fff;
+		}
+		.navbar a:hover{
+			color: green;
+			text-decoration: underline;
+		}
+		/*Our Most Popular Packges*/
+		.container .title{
+			padding: 100px 0 50px 0;
+			text-align: center;
+
+		}
+		.title h1{
+			font-weight: bolder;
+			margin-bottom: 20px;
+		}
+		.title p,.caption p{
+			color: #777;
+			font-weight: bolder;			
+		}
+		.imgBox{
+			width: 350px;
+			height: 300px;
+			overflow: hidden;
+		}
+		.thumbnail img{
+			width: 100%;
+			height: 100%;
+			transition: 1s;
+		}
+		/*.thumbnail img:hover{
+			transform: scale(1.1);
+			}*/
+			.thumbnail:hover img{
+				transform: scale(1.1);
+			}
+			.thumbnail:hover .btn{
+				background-color: #dc3545;
+				border: none;
+			}
+			.thumbnail:hover h3{
+				color: #dc3545;
+			}
+			.col-md-4{
+				text-align: center;
+			}
+			.caption{
+				text-align: left;
+			}
+			.caption h3{
+				font-size: 22px;
+				font-weight: bold;
+			}
+			.price{
+				padding-left: 10px;
+				color: green;
+				font-size:18px;
+			}
+			.caption .btn{
+				margin-top: 20px;
+			}
+			.glyphicon-star{
+				color: #dc3545;
+				font-size: 20px;
+				top: 15px;
+				left: 30%;
+			}
+			/*Incredible Place*/
+			.place{
+				width: 350px;
+				height: 250px;
+				text-align: center;
+				margin-bottom: 50px;
+			}
+			.place:hover{
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.35)
+			}
+			.place img{
+				width: 100%;
+				height: 100%;
+			}
+			/*弹出层*/
+			.lightBox{
+				width: 1180px;
+				height: 600px;
+				color: #fff;
+				background-color: rgba(0,0,0,0.6);
+				position: absolute;
+				top: 250%;
+				left: 60px;
+				margin-bottom: 20px;
+				display: none;
+			}
+			.closeBtn{
+				font-size: 60px;
+				position: absolute;
+				top: 10px;
+				right: 30px;
+				cursor: pointer;
+			}
+			.closeBtn:hover{
+				color:#999;
+			}
+			.lbContent{
+				width: 800px;
+				height: 500px;
+				position: absolute;
+				background-color: red;
+				top: 50%;
+				left: 50%;
+				margin-top: -250px;
+				margin-left: -400px;
+			}
+			.lightBox a{
+				padding: 20px;
+				position: absolute;
+				top: 50%;
+				margin-top: -50px;
+				color: #fff;
+				text-decoration: none;
+				font-size:40px;
+				font-weight: bolder;
+				cursor: pointer;
+			}
+			.lightBox a:hover
+			{
+				/*background-color: rgba(0, 0, 0, 0.6);*/
+				color:#999;
+			}
+			.prev{
+				left: 100px;
+			}
+			.next{
+				right: 100px;
+			}
+			.lightBox .slides{
+				position: absolute;
+				display: none;
+			}
+			.slides .numtxt{
+				position: absolute;
+				left: 20px;
+				top: 20px;
+				font-size: 16px;
+			}
+			.slides img{
+				width: 800px;
+				height: 500px;
+			}
+			#row2 .col-md-4{
+				padding-bottom: 0;
+				height: 250px;
+			}
+			#mark,#top{
+				text-align:center;
+				color: #fff;
+				width: 50px;
+				height: 50px;
+				line-height: 50px;
+				background-color: #dc3545;
+				text-decoration: none;
+				position: fixed;
+				z-index: 1;
+				right: 10px;
+				bottom: 10px;
+				font-weight: bold;
+			}
+			#mark{
+				bottom:61px;
+			}
+			#mark:hover ul{
+				display: block;
+			}
+			#mark ul{
+				margin: 0;
+				padding:0;
+				position: absolute;
+				width: 150px;
+				background-color: rgba(0,0,0,0.7);
+				right: 50px;
+				bottom:0;
+				display: none;
+			}
+			#mark li{
+				margin: 0;
+				box-sizing: border-box;
+			}
+		</style>
+	</head>
+	<body id="up">
+		
+		<!-- 导航栏 -->
+		<ul class="navbar">
+			<li><a href="#">Home</a></li>
+			<li><a href="#container1">Packges</a></li>
+			<li><a href="#container2">Places</a></li>
+			<li><a href="#">Loves</a></li>
+			<li><a href="#">Contact</a></li>
+		</ul>
+		<!-- 轮播图 bootstrap Carousel插件-->
+		<div id="myCarousel" class="carousel slide">
+			<!-- 轮播（Carousel）指标 -->
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+			</ol>   
+			<!-- 轮播（Carousel）项目 -->
+			<div class="carousel-inner">
+				<div class="item active">
+					<div id="content1" class="content">
+						<h3>Open Your Eyes To Pictual1</h3>
+						<h1>The Hidden World</h1>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua.</p>
+					</div>
+					<img src="travleImg/slider_1_1.jpg" alt="First slide" style="width:100%;height:100%;">
+
+				</div>
+				<div class="item">
+					<div id="content2" class="content">
+						<h3>Open Your Eyes To Pictual2</h3>
+						<h1>The Hidden World</h1>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua.</p>
+					</div>
+					<img src="travleImg/slider_1_2.jpg" alt="Second slide">
+				</div>
+			</div>
+			<!-- 轮播（Carousel）导航 -->
+			<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div> 
+		<!-- popular palces bootstrap网格系统排版+CSS3动画-->
+		<div class="container" id="container1">
+			<a href="#up" id="top">TOP</a>
+			<div id="mark">love         <!-- shopcart -->
+				<ul id="love">
+					<li v-for="(item,index) in cart_json">{{item.name}} {{item.price}}</li>				
+				</ul>
+			</div>
+			<div class="title">
+				<h1>Our Most Popular Packges</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br>labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+			</div>
+			<ul class="row">
+				<li class="col-md-4"  v-for="(item,index) in palce_json">
+					<div class="thumbnail">
+						<div class="imgBox"><img v-bind:src="item.url" alt="缩略图"></div>
+						<div class="caption">
+							<h3>{{item.name}} – All Stunning Places</h3>
+							<p>4 Days, 5 Nights Start From <span class="price">{{item.price}}</span></p>
+							<p>
+								<button class="btn btn-success" @click="choose(index)">Book Now</button>
+								<span class="glyphicon glyphicon-star"></span>
+								<span class="glyphicon glyphicon-star"></span>
+								<span class="glyphicon glyphicon-star"></span>
+								<span class="glyphicon glyphicon-star"></span>
+							</p>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<!-- Incredible Place js实现类似lightbox相册预览-->
+		<div class="container" id="container2">
+			<div class="title">
+				<h1>Incredible Place</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br>labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+			</div>
+			<div class="row">
+				<div class="col-md-4"><div class="place">
+					<img src="travleImg/place/1.jpg" onclick="openModal();currentSlide(1)" >	
+				</div></div>
+				<div class="col-md-4"><div class="place">
+					<img src="travleImg/place/2.jpg" onclick="openModal();currentSlide(2)" >
+				</div></div>
+				<div class="col-md-4"><div class="place">
+					<img src="travleImg/place/3.jpg" onclick="openModal();currentSlide(3)" >
+				</div></div>
+			</div>
+			<div class="row">
+				<div class="col-md-4"><div class="place">
+					<img src="travleImg/place/4.jpg" onclick="openModal();currentSlide(4)" >	
+				</div></div>
+				<div class="col-md-4"><div class="place">
+					<img src="travleImg/place/5.jpg" onclick="openModal();currentSlide(5)" >
+				</div></div>
+				<div class="col-md-4"><div class="place">
+					<img src="travleImg/place/6.jpg" onclick="openModal();currentSlide(6)" >
+				</div>	</div>
+			</div>
+
+			<div id="lightBox" class="lightBox">
+				<span class="closeBtn" onclick="closeModal()">&times;</span>
+				<div class="lbContent">
+					<div class="slides">
+						<div class="numtxt">1/6</div>
+						<img src="travleImg/place/1.jpg">
+					</div>
+					<div class="slides">
+						<div class="numtxt">2/6</div>
+						<img src="travleImg/place/2.jpg">
+					</div>
+					<div class="slides">
+						<div class="numtxt">3/6</div>
+						<img src="travleImg/place/3.jpg">
+					</div>
+					<div class="slides">
+						<div class="numtxt">4/6</div>
+						<img src="travleImg/place/4.jpg">
+					</div>
+					<div class="slides">
+						<div class="numtxt">5/6</div>
+						<img src="travleImg/place/5.jpg">
+					</div>
+					<div class="slides">
+						<div class="numtxt">6/6</div>
+						<img src="travleImg/place/6.jpg">
+					</div>
+				</div>
+				<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+				<a class="next" onclick="plusSlides(1)">&#10095;</a>
+			</div>
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function(){
+			// 停止轮播
+			$("#myCarousel").carousel('pause');
+		});
+		// 购物车
+		new Vue({
+			el:"#container1",
+			data:{
+				palce_json:[
+				{
+					id:1,
+					name:'Dubai',
+					price:'$500',
+					url:'travleImg/packages/1.jpg'
+				},
+				{
+					id:2,
+					name:'Thailand',
+					price:'$800',
+					url:'travleImg/packages/2.jpg'
+				},
+				{
+					id:3,
+					name:'England',
+					price:'$600',
+					url:'travleImg/packages/3.jpg'
+				},
+				],
+				cart_json:[],
+				current:''
+			},
+			methods:{
+				choose(index){
+					var item=0;
+					this.current=index;
+					item=this.cart_json.find(item =>{return item.id==this.current+1}); /*查找元素*/
+					if(item===undefined){this.cart_json.push(this.palce_json[this.current]);
+						//HTML5 Web存储心仪的旅游地点
+						localStorage.setItem(this.palce_json[this.current].name,this.palce_json[this.current].price);  //保存数据：localStorage.setItem(key,value);
+						// alert("添加成功");
+					}
+					else{
+						// console.log("has exit")
+					};					
+					this.current=''		
+				},
+			},
+		})
+			//localStorage.removeItem(key); 删除单个数据
+			//localStorage.clear();  删除所有数据
+			loadAll();
+			///将存储在localStorage中的对象提取出来，展现到界面上
+			function loadAll(){
+				var list=document.getElementById("love");
+				var result="<li>key value</li>";
+				for(var i=0;i<localStorage.length;i++){  
+					var sitename = localStorage.key(i);  
+                var siteprice = localStorage.getItem(sitename);  //读取数据：localStorage.getItem(key);
+                result += "<li>"+sitename+" "+siteprice+"</li>";  
+            }
+            list.innerHTML=result;
+        }
+        
+			// lightBox
+			function openModal(){
+				document.getElementById("lightBox").style.display="block";
+			}
+			function closeModal(){
+				document.getElementById("lightBox").style.display="none";
+			}
+			var slideIndex=1;
+			showSlides(slideIndex);
+			function currentSlide(n){
+				showSlides(slideIndex=n);
+			}
+			function plusSlides(n){
+				showSlides(slideIndex+=n);
+			}
+			function showSlides(n){
+				var i;
+				var slides=document.getElementsByClassName("slides");
+				if (n>slides.length) {slideIndex=1}
+					if (n<1) {slideIndex=slides.length}
+						for (i = 0; i < slides.length; i++) {
+							slides[i].style.display="none";
+						}
+						slides[slideIndex-1].style.display = "block";
+					}
+				</script>
+			</body>
+			</html>
